@@ -15,6 +15,7 @@ class Currency(models.Model):
     cur_name = models.CharField(default='RUB', max_length=3, unique=True, db_index=True,
                                 verbose_name='Наименование валюты')
     curs = models.FloatField(default=0, verbose_name='Курс валюты')
+    description = models.CharField(max_length=50, verbose_name='Описание')
     data_update = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
 
     def __str__(self):
@@ -66,7 +67,7 @@ class Transaction(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.PROTECT, verbose_name='Пользователь')
     currency = models.ForeignKey(Currency, default=1, on_delete=models.PROTECT, verbose_name='Наименование валюты')
     balance = models.FloatField(default=0, verbose_name='Остаток валюты на счёте')
-    destination = models.CharField(max_length=15, default='Открытие счёта', verbose_name='Назначение')
+    destination = models.CharField(max_length=15, verbose_name='Назначение')
     data_transfer = models.DateTimeField(auto_now_add=True, verbose_name='Дата проведения')
 
     class Meta:

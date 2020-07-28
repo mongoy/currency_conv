@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2 class="mb-3">Список валют :</h2><hr>
-  {% for currency in currency_list %}
+  <h2 class="mb-3">Список клиентов :</h2><hr>
+  {% for customuser in customuser_list %}
     <div class="card-header">
       <div class="row">
-        <div class="col-8" ><h6>{{ currency.cur_name }} - {{ currency.description }}</h6></div>
+        <div class="col-8" ><h6>{{ customuser.email }}</h6></div>
         {% if user.is_authenticated %}
-          <div class="col-2"><a href="{% url 'currency-detail' currency.id %}" class="btn btn-sm btn-outline-info my-2 my-sm-0" role="group" aria-disabled="true">Просмотр</a></div>
+          <div class="col-2"><a href="{% url 'custom-user-detail' customuser.id %}" class="btn btn-sm btn-outline-info
+            my-2 my-sm-0" role="group" aria-disabled="true">Просмотр</a></div>
           <div class="col-1"><a href="#" class="btn btn-sm btn-outline-danger my-2 my-sm-0" role="group" aria-disabled="true">Изменить</a></div>
         {% else %}
           <div class="col-2"></div>

@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import CurrencyListView
+from .views import CurrencyListView, CurrencyDetailView, CustomUserListView, CustomUserDetailView
 
 
 urlpatterns = [
-    path('', CurrencyListView.as_view(), name='currency-list'),
+    path('currencies/', CurrencyListView.as_view(), name='currency-list'),
+    path('currencies/<int:pk>', CurrencyDetailView.as_view(), name='currency-detail'),
+    path('customusers/', CustomUserListView.as_view(), name='custom-user-list'),
+    path('customusers/<int:pk>', CustomUserDetailView.as_view(), name='custom-user-detail'),
+
 ]

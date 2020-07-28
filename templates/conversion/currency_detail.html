@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h2 class="mb-3">Клиент - {{ currency.cur_name }}</h2>
+  <h3 class="mb-3">{{ currency.description }}</h3>
+    <div class="card mb-1">
+      <p class="card-header"><strong>Курс : {{ currency.curs }}</strong></p>
+      <p class="card-header"><strong>на : {% now "j F Y H:i" %} </strong></p>
+    </div><br><hr>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3"><a href="{% url 'currency-list' %}" class="btn btn-outline-success my-1 my-sm-0" aria-disabled="true">Список валют</a></div>
+        </div>
+    </div>
+{% endblock %}

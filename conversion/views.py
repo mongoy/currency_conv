@@ -10,6 +10,7 @@ class CurrencyListView(ListView):
     model = Currency
     request = Currency.objects.all()
     template_name = 'conversion/currency_list.html'
+    paginate_by = 5
 
 
 class CurrencyDetailView(DetailView):

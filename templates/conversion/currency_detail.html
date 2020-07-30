@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+  {% if user.is_authenticated %}
+    <p>Привет {{ request.user }}</p><br>
+  {% endif %}
   <h2 class="mb-3">Клиент - {{ currency.cur_name }}</h2>
   <h3 class="mb-3">{{ currency.description }}</h3>
     <div class="card mb-1">

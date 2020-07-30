@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  {% if user.is_authenticated %}
+    <p>Привет {{ request.user }}</p><br>
+  {% endif %}
   <h2 class="mb-3">Список клиентов :</h2><hr>
   {% for customuser in customuser_list %}
     <div class="card-header">

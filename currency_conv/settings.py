@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'conversion.apps.ConversionConfig'
-]
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +127,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Своя модель для пользователей
 AUTH_USER_MODEL = 'conversion.CustomUser'
+# Перенаправление пользователя после успешного входа (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = 'currency-list'
+LOGOUT_REDIRECT_URL = 'currency-list'

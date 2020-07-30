@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Currency, CustomUser
+from .forms import CustomUserCreationForm
 
 
 class CurrencyListView(ListView):
@@ -39,6 +40,7 @@ class CustomUserDetailView(DetailView):
     Клиент
     """
     model = CustomUser
+    template_name = 'conversion/custom_user_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,3 +49,11 @@ class CustomUserDetailView(DetailView):
         else:
             return CustomUser.objects.none()
 
+
+class SignUpView(CreateView):
+    """
+    Новый клиент
+    """
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'

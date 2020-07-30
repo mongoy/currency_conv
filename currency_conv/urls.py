@@ -19,8 +19,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('conversion.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='conversion/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='conversion/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('conversion.urls')),
+    # path('login/', auth_views.LoginView.as_view(template_name='conversion/login.html'), name='login'),
+    # path('logout/', auth_views.LogoutView.as_view(template_name='conversion/logout.html'), name='logout'),
+    path('', include('conversion.urls')),
 ]

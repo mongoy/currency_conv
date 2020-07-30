@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2 class="mb-3">Список валют :</h2><hr>
+  {% if user.is_authenticated %}
+    <p>Привет {{ request.user }}</p><br>
+  {% endif %}  <h2 class="mb-3">Список валют :</h2><hr>
   {% for currency in currency_list %}
     <div class="card-header">
       <div class="row">

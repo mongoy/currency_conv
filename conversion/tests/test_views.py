@@ -11,7 +11,7 @@ class CurrencyListViewTest(TestCase):
         # Create 13 currencies for pagination tests
         number_of_currencies = 13
         for currency_num in range(number_of_currencies):
-            Currency.objects.create(cur_name='C%s' % currency_num, curs=currency_num, )
+            Currency.objects.create(cur_name='C%s' % currency_num, curs=currency_num)
 
     def test_view_url_exists_at_desired_location(self):
         # проверка URL-адреса, просто определенный путь без указания домена
@@ -27,7 +27,7 @@ class CurrencyListViewTest(TestCase):
         # проверка URL-адреса, генерируется из имени
         resp = self.client.get(reverse('currency-list'))
         self.assertEqual(resp.status_code, 200)
-        # Прлучаем шаблон
+        # Получаем шаблон
         self.assertTemplateUsed(resp, 'conversion/currency_list.html')
 
     def test_pagination_is_ten(self):
